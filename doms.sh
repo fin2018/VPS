@@ -210,7 +210,64 @@ rm /root/webmin_1.680_all.deb
 service webmin restart
 service vnstat restart
 
+# download script
+cd
+wget -O /usr/bin/benchmark "https://raw.githubusercontent.com/fin2018/VPS/master/benchmark.sh"
+wget -O /usr/bin/speedtest "https://raw.githubusercontent.com/ForNesiaFreak/FNS_Debian7/fornesia.com/null/speedtest_cli.py"
+wget -O /usr/bin/dropmon "https://raw.githubusercontent.com/fin2018/VPS/master/dropmon.sh"
+wget -O /usr/bin/menu "https://raw.githubusercontent.com/fin2018/VPS/master/menu.sh"
+wget -O /usr/bin/user-active-list "https://raw.githubusercontent.com/fin2018/VPS/master/user-active-list.sh"
+wget -O /usr/bin/user-add "https://raw.githubusercontent.com/fin2018/VPS/master/user-add.sh"
+wget -O /usr/bin/user-add-pptp "https://raw.githubusercontent.com/fin2018/VPS/master/user-add-pptp.sh"
+wget -O /usr/bin/user-del "https://raw.githubusercontent.com/fin2018/VPS/master/user-del.sh"
+wget -O /usr/bin/user-expire "https://raw.githubusercontent.com/fin2018/VPS/master/user-expire.sh"
+wget -O /usr/bin/user-expire-list "https://raw.githubusercontent.com/fin2018/VPS/master/user-expire-list.sh"
+wget -O /usr/bin/user-gen "https://raw.githubusercontent.com/fin2018/VPS/master/user-gen.sh"
+wget -O /usr/bin/user-limit "https://raw.githubusercontent.com/fin2018/VPS/master/user-limit.sh"
+wget -O /usr/bin/user-list "https://raw.githubusercontent.com/fin2018/VPS/master/user-list.sh"
+wget -O /usr/bin/user-login "https://raw.githubusercontent.com/fin2018/VPS/master/user-login.sh"
+wget -O /usr/bin/user-pass "https://raw.githubusercontent.com/fin2018/VPS/master/user-pass.sh"
+wget -O /usr/bin/user-renew "https://raw.githubusercontent.com/fin2018/VPS/master/user-renew.sh"
 
+chmod +x /usr/bin/benchmark
+chmod +x /usr/bin/speedtest
+chmod +x /usr/bin/dropmon
+chmod +x /usr/bin/menu
+chmod +x /usr/bin/user-active-list
+chmod +x /usr/bin/user-add
+chmod +x /usr/bin/user-add-pptp
+chmod +x /usr/bin/user-del
+chmod +x /usr/bin/user-expire
+chmod +x /usr/bin/user-expire-list
+chmod +x /usr/bin/user-gen
+chmod +x /usr/bin/user-limit
+chmod +x /usr/bin/user-list
+chmod +x /usr/bin/user-login
+chmod +x /usr/bin/user-pass
+chmod +x /usr/bin/user-renew
+
+echo "*/30 * * * * root service dropbear restart" > /etc/cron.d/dropbear
+echo "00 23 * * * root /usr/bin/user-expire" > /etc/cron.d/user-expire
+echo "0 */12 * * * root /sbin/reboot" > /etc/cron.d/reboot
+#echo "@reboot root /usr/bin/user-limit" > /etc/cron.d/user-limit
+#echo "@reboot root /usr/bin/autokill" > /etc/cron.d/autokill
+#sed -i '$ i\screen -AmdS check /root/autokill' /etc/rc.local
+
+# finishing
+chown -R www-data:www-data /home/vps/public_html
+service cron restart
+service nginx start
+service php5-fpm start
+service vnstat restart
+service snmpd restart
+service ssh restart
+service dropbear restart
+service fail2ban restart
+service squid3 restart
+service webmin restart
+cd
+rm -f /root/.bash_history && history -c
+echo "unset HISTFILE" >> /etc/profile 
 
 # info
 clear
