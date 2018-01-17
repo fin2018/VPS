@@ -1,17 +1,13 @@
 #!/bin/bash 
 # 
-
-# initialisasi var
-export DEBIAN_FRONTEND=noninteractive
-OS=`uname -m`;
-MYIP=$(wget -qO- ipv4.icanhazip.com);
-MYIP2="s/xxxxxxxxx/$MYIP/g";
-ether=`ifconfig | cut -c 1-8 | sort | uniq -u | grep venet0 | grep -v venet0:`
-if [[ $ether = "" ]]; then
-        ether=eth0
-
 # go to root 
 cd 
+
+# initialisasi var 
+export DEBIAN_FRONTEND=noninteractive 
+OS=`uname -m`; 
+MYIP=$(wget -qO- ipv4.icanhazip.com); 
+MYIP2="s/xxxxxxxxx/$MYIP/g"; 
 
 # disable ipv6 
 echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6 
