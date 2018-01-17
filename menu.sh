@@ -9,10 +9,7 @@ do
 
 	clear
 
-	echo "--------------- Selamat Datang Di Server Finest Media - IP: $MYIP ---------------"
-    echo "Script Created By Pa'an Finest"
-    echo "Support By : Finest Media - Phreakers Jateng Official"
-    echo ""
+	echo "--------------- Selamat Datang Di Server Finest Media - IP: $MYIP ----------------"
 	cname=$( awk -F: '/model name/ {name=$2} END {print name}' /proc/cpuinfo )
 	cores=$( awk -F: '/model name/ {core++} END {print core}' /proc/cpuinfo )
 	freq=$( awk -F: ' /cpu MHz/ {freq=$2} END {print freq}' /proc/cpuinfo )
@@ -26,6 +23,8 @@ do
 	echo "Total amount of ram : $tram MB"
 	echo "Total amount of swap : $swap MB"
 	echo "System uptime : $up"
+        echo "Script Created By : Pa'an Finest"
+        echo "Support By : Finest Media - Phreakers Jateng Official"
 	echo "------------------------------------------------------------------------------"
 	echo "Apa yang ingin Anda lakukan?"
 	echo " 1) Buat Akun SSH/OpenVPN (user-add)"
