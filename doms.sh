@@ -210,6 +210,8 @@ rm /root/webmin_1.680_all.deb
 service webmin restart
 service vnstat restart
 
+
+
 # info
 clear
 echo "Autoscript Include:" | tee log-install.txt
@@ -273,7 +275,7 @@ echo "" | tee -a log-install.txt
 echo "SILAHKAN REBOOT VPS ANDA !" | tee -a log-install.txt
 echo "=======================================================" | tee -a log-install.txt
 cd 
-rm -f /root/dom.sh
+rm -f /root/doms.sh
 rm -f /root/pptp.sh
 rm -f /root/dropbear-2012.55.tar.bz2
 rm -rf /root/dropbear-2012.55
