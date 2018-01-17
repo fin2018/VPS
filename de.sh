@@ -282,7 +282,7 @@ echo "" | tee -a log-install.txt
 echo "SILAHKAN REBOOT VPS ANDA !" | tee -a log-install.txt
 echo "=======================================================" | tee -a log-install.txt
 cd 
-rm -f /root/aan.sh
+rm -f /root/de.sh
 rm -f /root/pptp.sh
 rm -f /root/dropbear-2012.55.tar.bz2
 rm -rf /root/dropbear-2012.55
