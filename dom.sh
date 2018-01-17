@@ -174,16 +174,7 @@ echo "/usr/sbin/nologin" >> /etc/shells
 service ssh restart
 service dropbear restart
 
-# install fail2ban
-apt-get -y install fail2ban;service fail2ban restart
-
 # Instal DDOS Flate
-if [ -d '/usr/local/ddos' ]; then
-	echo; echo; echo "Please un-install the previous version first"
-	exit 0
-else
-	mkdir /usr/local/ddos
-fi
 clear
 echo; echo 'Installing DOS-Deflate 0.6'; echo
 echo; echo -n 'Downloading source files...'
@@ -282,7 +273,7 @@ echo "" | tee -a log-install.txt
 echo "SILAHKAN REBOOT VPS ANDA !" | tee -a log-install.txt
 echo "=======================================================" | tee -a log-install.txt
 cd 
-rm -f /root/de.sh
+rm -f /root/dom.sh
 rm -f /root/pptp.sh
 rm -f /root/dropbear-2012.55.tar.bz2
 rm -rf /root/dropbear-2012.55
