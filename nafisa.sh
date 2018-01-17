@@ -3,8 +3,10 @@
 # initialisasi var
 export DEBIAN_FRONTEND=noninteractive
 OS=`uname -m`;
-MYIP=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0'`;
-MYIP2="s/xxxxxxxxx/$MYIP/g";
+#MYIP=$(ifconfig | grep 'inet addr:' | grep -v inet6 | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | cut -d: -f2 | awk '{ print $1}' | head -1)
+	#if [ "$MYIP" = "" ]; then
+		#MYIP=$(wget -qO- ipv4.icanhazip.com)
+    #MYIP2="s/xxxxxxxxx/$MYIP/g";
 
 # go to root
 cd
@@ -332,7 +334,7 @@ echo "" | tee -a log-install.txt
 echo "SILAHKAN REBOOT VPS ANDA !" | tee -a log-install.txt
 echo "=======================================================" | tee -a log-install.txt
 cd 
-rm -f /root/doms.sh
+rm -f /root/nafisa.sh
 rm -f /root/pptp.sh
 rm -f /root/dropbear-2012.55.tar.bz2
 rm -rf /root/dropbear-2012.55
