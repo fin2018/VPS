@@ -174,16 +174,6 @@ echo "/usr/sbin/nologin" >> /etc/shells
 service ssh restart
 service dropbear restart
 
-# install stunnel 
-apt-get install stunnel4 -y
-wget -O /etc/stunnel/stunnel.conf "https://gist.githubusercontent.com/bwann/82ed679e94972666808d97587d276677/raw/d26838667973a94a403a0c1bade6793dd83e9e5d/stunnel.conf"
-wget -O /etc/stunnel/stunnel-client.conf "https://gist.githubusercontent.com/bwann/82ed679e94972666808d97587d276677/raw/d26838667973a94a403a0c1bade6793dd83e9e5d/stunnel-client.conf"
-openssl genrsa -out key.pem 2048
-openssl req -new -x509 -days 365 -nodes -out stunnel.pem -keyout stunnel.pem
-cat key.pem cert.pem >> /etc/stunnel/stunnel.conf
-sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
-service stunnel4 restart
-
 # install vnstat gui
 cd /home/vps/public_html/
 wget http://www.sqweek.com/sqweek/files/vnstat_php_frontend-1.5.1.tar.gz
